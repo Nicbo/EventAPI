@@ -1,7 +1,6 @@
 package ca.nicbo.eventapi.example;
 
 import ca.nicbo.eventapi.handler.EventHandler;
-import ca.nicbo.eventapi.listener.Listener;
 import ca.nicbo.eventapi.priority.EventPriority;
 
 /**
@@ -13,7 +12,7 @@ import ca.nicbo.eventapi.priority.EventPriority;
  * @author Nicbo
  */
 
-public class ExampleListener implements Listener {
+public class ExampleListener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onExampleEventLowest(ExampleEvent event) {
         event.setValue("LOWEST");

@@ -1,7 +1,6 @@
 package ca.nicbo.eventapi.handler;
 
 import ca.nicbo.eventapi.priority.EventPriority;
-import ca.nicbo.eventapi.listener.Listener;
 
 import java.lang.reflect.Method;
 
@@ -12,7 +11,7 @@ import java.lang.reflect.Method;
  */
 
 public final class Handler {
-    private final Listener listener;
+    private final Object listener;
     private final Method method;
     private final EventHandler annotation;
 
@@ -24,13 +23,13 @@ public final class Handler {
      * @param annotation the event handler annotation
      * @see EventHandler
      */
-    public Handler(Listener listener, Method method, EventHandler annotation) {
+    public Handler(Object listener, Method method, EventHandler annotation) {
         this.listener = listener;
         this.method = method;
         this.annotation = annotation;
     }
 
-    public Listener getListener() {
+    public Object getListener() {
         return listener;
     }
 

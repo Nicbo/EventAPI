@@ -4,7 +4,6 @@ import ca.nicbo.eventapi.event.Cancellable;
 import ca.nicbo.eventapi.event.Event;
 import ca.nicbo.eventapi.handler.EventHandler;
 import ca.nicbo.eventapi.handler.Handler;
-import ca.nicbo.eventapi.listener.Listener;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -28,7 +27,7 @@ public final class EventManager {
      *
      * @param listener the listener
      */
-    public void registerListener(Listener listener) {
+    public void registerListener(Object listener) {
         for (Method method : listener.getClass().getDeclaredMethods()) {
             if (isEventHandler(method)) {
                 registerEventHandler(method, listener);
@@ -41,7 +40,7 @@ public final class EventManager {
      *
      * @param listener the listener
      */
-    public void unregisterListener(Listener listener) {
+    public void unregisterListener(Object listener) {
         for (Iterator<Set<Handler>> iterator = eventHandlers.values().iterator(); iterator.hasNext(); ) {
             Set<Handler> handlers = iterator.next();
             handlers.removeIf(handler -> handler.getListener().equals(listener));
@@ -120,7 +119,7 @@ public final class EventManager {
      * @param method the method that is being registered
      * @param listener the listener of which the method belongs to
      */
-    private void registerEventHandler(Method method, Listener listener) {
+    private void registerEventHandler(Method method, Object listener) {
         Class<? extends Event> clazz = method.getParameterTypes()[0].asSubclass(Event.class);
 
         if (!method.isAccessible()) {

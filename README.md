@@ -35,12 +35,12 @@ public class ExampleEvent implements Event, Cancellable {
 ```
 
 ### Creating a listener
-To create a listener for events your class must implement [Listener](src/ca/nicbo/eventapi/listener/Listener.java). For an event handler to work you must add the [@EventHandler](src/ca/nicbo/eventapi/handler/EventHandler.java) annotation to the method and have one parameter that can be an instance of [Event](src/ca/nicbo/eventapi/event/Event.java).
+For an event handler to work you must add the [@EventHandler](src/ca/nicbo/eventapi/handler/EventHandler.java) annotation to the method and have one parameter that can be an instance of [Event](src/ca/nicbo/eventapi/event/Event.java).
 
 The [@EventHandler](src/ca/nicbo/eventapi/handler/EventHandler.java) annotation has some optional parameters. The [EventPriority](src/ca/nicbo/eventapi/priority/EventPriority.java) is the order that the event handlers are called (LOWEST, LOW, MEDIUM, HIGH, HIGHEST, MONITOR). EventPriority.MONITOR should only be used to monitor the event and should not alter the event in any way. The ignoreCancelled boolean decides if your event handler should be called when an event is cancelled. The priority defaults to EventPriority.MEDIUM and the ignoreCancelled defaults to false.
 
 ```java
-public class ExampleListener implements Listener {
+public class ExampleListener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onExampleEventLowest(ExampleEvent event) {
         event.setValue("LOWEST");
@@ -144,7 +144,7 @@ public class PlayerMoveEvent extends PlayerEvent {
 This event handler would be called when PlayerMoveEvent is fired.
 
 ```java
-public class PlayerListener implements Listener {
+public class PlayerListener {
     @EventHandler
     public void onPlayerEvent(PlayerEvent event) {
         // This will be called by any event that is an instance of PlayerEvent
