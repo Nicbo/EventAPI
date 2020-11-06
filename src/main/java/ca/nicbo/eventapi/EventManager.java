@@ -15,7 +15,7 @@ import java.util.*;
  * @author Nicbo
  */
 
-public final class EventManager {
+public class EventManager {
     private final Map<Class<? extends Event>, Set<Handler>> eventHandlers;
 
     public EventManager() {

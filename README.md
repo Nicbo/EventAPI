@@ -2,7 +2,7 @@
 An extremely lightweight API that can be used for event based java projects. It is heavily inspired by [DarkMagician6's EventAPI](https://bitbucket.org/DarkMagician6/eventapi/src/master/) and the [Spigot](https://www.spigotmc.org/) event system. It is a very simplified version of what theirs have to offer. You are free to alter and use this however you like as it is licensed under the MIT License. I am probably going to keep this updated until I'm happy with it and there are no bugs.
 
 ### Creating an event
-To create an event you must implement [Event](src/ca/nicbo/eventapi/event/Event.java) and if you want it to be cancellable implement [Cancellable](src/ca/nicbo/eventapi/event/Cancellable.java).
+To create an event you must implement [Event](src/main/java/ca/nicbo/eventapi/event/Event.java) and if you want it to be cancellable implement [Cancellable](src/main/java/ca/nicbo/eventapi/event/Cancellable.java).
 
 ```java
 public class ExampleEvent implements Event, Cancellable {
@@ -35,9 +35,9 @@ public class ExampleEvent implements Event, Cancellable {
 ```
 
 ### Creating a listener
-For an event handler to work you must add the [@EventHandler](src/ca/nicbo/eventapi/handler/EventHandler.java) annotation to the method and have one parameter that can be an instance of [Event](src/ca/nicbo/eventapi/event/Event.java).
+For an event handler to work you must add the [@EventHandler](src/main/java/ca/nicbo/eventapi/handler/EventHandler.java) annotation to the method and have one parameter that can be an instance of [Event](src/main/java/ca/nicbo/eventapi/event/Event.java).
 
-The [@EventHandler](src/ca/nicbo/eventapi/handler/EventHandler.java) annotation has some optional parameters. The [EventPriority](src/ca/nicbo/eventapi/priority/EventPriority.java) is the order that the event handlers are called (LOWEST, LOW, MEDIUM, HIGH, HIGHEST, MONITOR). EventPriority.MONITOR should only be used to monitor the event and should not alter the event in any way. The ignoreCancelled boolean decides if your event handler should be called when an event is cancelled. The priority defaults to EventPriority.MEDIUM and the ignoreCancelled defaults to false.
+The [@EventHandler](src/main/java/ca/nicbo/eventapi/handler/EventHandler.java) annotation has some optional parameters. The [EventPriority](src/main/java/ca/nicbo/eventapi/priority/EventPriority.java) is the order that the event handlers are called (LOWEST, LOW, MEDIUM, HIGH, HIGHEST, MONITOR). EventPriority.MONITOR should only be used to monitor the event and should not alter the event in any way. The ignoreCancelled boolean decides if your event handler should be called when an event is cancelled. The priority defaults to EventPriority.MEDIUM and the ignoreCancelled defaults to false.
 
 ```java
 public class ExampleListener {

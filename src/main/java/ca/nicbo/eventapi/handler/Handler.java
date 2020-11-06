@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
  * @author Nicbo
  */
 
-public final class Handler {
+public class Handler {
     private final Object listener;
     private final Method method;
     private final EventHandler annotation;
@@ -43,9 +43,5 @@ public final class Handler {
 
     public boolean isIgnoringCancelled() {
         return annotation.ignoreCancelled();
-    }
-
-    public EventHandler getAnnotation() {
-        return annotation;
     }
 }
